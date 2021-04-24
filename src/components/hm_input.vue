@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     handelinput(e) {
-      this.pn = "class";
+      // this.pn = "class";
       //   console.log(e.target);
       // 子传父 必须是input事件
       let value = e.target.value;

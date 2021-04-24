@@ -11,9 +11,9 @@ import router from '@/router/router.js'
 // // 所有use 都是挂载到全局                                   
 // Vue.use(Vant);
 
-import { Toast } from 'vant';
-
-Vue.use(Toast);
+import { Toast, Icon, Uploader, Dialog, Field, PasswordInput, NumberKeyboard, Popup, Overlay, Button, ActionSheet, Tab, Tabs } from 'vant';
+// 链式编程
+Vue.use(Toast).use(Icon).use(Uploader).use(Dialog).use(Field).use(NumberKeyboard).use(PasswordInput).use(Popup).use(Overlay).use(Button).use(ActionSheet).use(Tab).use(Tabs);
 
 Vue.config.productionTip = false
 

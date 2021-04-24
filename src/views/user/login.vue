@@ -39,8 +39,8 @@ export default {
   data() {
     return {
       user: {
-        username: "",
-        password: "",
+        username: "17876381470",
+        password: "1234",
       },
     };
   },
@@ -58,9 +58,15 @@ export default {
       ) {
         userlogin(this.user)
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             if ((res.data.data.message = "登录成功")) {
               this.$toast.success("登录成功");
+              // 设置登录token
+              localStorage.setItem("hmtoutiao_token", res.data.data.token);
+              // 添加id 路径
+              this.$router.push({ path: `/personal/${res.data.data.user.id}` });
+              // 登录跳转
+              // this.$router.push({ path: "/personal" });
             } else {
               this.$toast.fail("用户不存在");
             }
