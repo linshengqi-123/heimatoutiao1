@@ -8,7 +8,7 @@
         <hminput
           v-model="user.username"
           placeholder="请输入用户名"
-          :rules="/^1[35789]\d{9}$|^admin$/"
+          :rules="/^1[035789]\d{9}$|^admin$/"
           msg="请输入手机号"
         ></hminput>
         <!-- 密码 -->
@@ -53,7 +53,7 @@ export default {
   methods: {
     logins(e) {
       if (
-        /^1[35789]\d{9}$|^admin$/.test(this.user.username) &&
+        /^1[035789]\d{9}$|^admin$/.test(this.user.username) &&
         /^.{3,16}$/.test(this.user.password)
       ) {
         userlogin(this.user)
@@ -63,8 +63,24 @@ export default {
               this.$toast.success("登录成功");
               // 设置登录token
               localStorage.setItem("hmtoutiao_token", res.data.data.token);
+              // 本地存储用户id
+              localStorage.setItem("hmtoutiao_userid", res.data.data.user.id);
+
               // 添加id 路径
-              this.$router.push({ path: `/personal/${res.data.data.user.id}` });
+              // this.$router.push({ path: `/personal/${res.data.data.user.id}` });
+              // 登录后回跳到之前浏览的页面
+              let redirect = location.href.split("=")[1];
+
+              if (redirect) {
+                // decodeURIComponent 还原代码格式
+                location.href = decodeURIComponent(redirect);
+              } else {
+                // 否则跳转到个人中心页// 跳转到个人中心页
+                this.$router.push({
+                  path: `/personal/${res.data.data.user.id}`,
+                });
+              }
+
               // 登录跳转
               // this.$router.push({ path: "/personal" });
             } else {

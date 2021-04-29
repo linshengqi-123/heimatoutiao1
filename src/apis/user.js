@@ -42,7 +42,30 @@ export const updateUserInfo = function (id, data) {
         data
     })
 }
-
+// 关注/user_follows/:id
+export const userfollows = (id) => {
+    return myaxios({
+        url: `/user_follows/${id}`,
+    })
+}
+// 取消用户关注/user_unfollow/:id
+export const userunfollow = function (id) {
+    return myaxios({
+        url: `/user_unfollow/${id}`,
+    })
+}
+// 7.获取用户关注列表数据
+export const getUserFollows = () => {
+    return myaxios({
+        url: `/user_follows`
+    })
+}
+// 8.获取用户收藏列表数据
+export const getUserStars = () => {
+    return myaxios({
+        url: `/user_star`
+    })
+}
 
 
 

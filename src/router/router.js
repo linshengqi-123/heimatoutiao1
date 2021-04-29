@@ -23,7 +23,8 @@ const router = new VueRouter({
         {
             name: 'register',
             path: '/register',
-            component: () => import('@/views/user/register.vue')
+            component: () => import('@/views/user/register.vue'),
+
         },
         {
             name: 'personal',
@@ -35,6 +36,36 @@ const router = new VueRouter({
             name: 'edit_profile',
             path: '/edit_profile/:id',
             component: () => import('@/views/user/edit_profile.vue')
+        },
+        {
+            name: 'postdetail',
+            path: '/postdetail/:id',
+            component: () => import('@/views/post/postdetail.vue')
+        },
+        {
+            name: 'myfollow',
+            path: '/myfollow',
+            component: () => import('@/views/user/myfollow.vue')
+        },
+        {
+            name: 'mystar',
+            path: '/mystar',
+            component: () => import('@/views/user/mystar.vue')
+        },
+        {
+            name: 'comment',
+            path: '/comment/:id',
+            component: () => import('@/views/comment.vue')
+        },
+        {
+            name: 'cateManager',
+            path: '/cateManager',
+            component: () => import('@/views/cateManager.vue')
+        },
+        {
+            name: 'search',
+            path: '/search',
+            component: () => import('@/views/search.vue')
         }
 
     ]
@@ -45,8 +76,8 @@ import { Toast } from 'vant'
 
 router.beforeEach((to, from, next) => {
     // console.log(to);
-
-    if (to.path.indexOf('/personal/') !== -1) {
+    let arr = ['personal', 'edit_profile']
+    if (arr.indexOf(to.name) !== -1) {
         // 接收token
         let token = localStorage.getItem('hmtoutiao_token')
 

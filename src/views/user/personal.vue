@@ -24,9 +24,13 @@
       </div>
     </router-link>
     <!-- 个人内容 -->
-    <hmcell title="我的关注" desc="关注的用户"></hmcell>
+    <hmcell
+      title="我的关注"
+      desc="关注的用户"
+      @click.native="$router.push({ path: '/myfollow' })"
+    ></hmcell>
     <hmcell title="我的跟贴" desc="跟贴/回复"></hmcell>
-    <hmcell title="我的收藏" desc="文章/收藏"></hmcell>
+    <hmcell title="我的收藏" desc="文章/收藏"  @click.native="$router.push({path: '/mystar'})"></hmcell>
     <hmcell title="设置"></hmcell>
     <hmbutton type="danger" style="margin-top: 20px" @clicks="logout"
       >退出</hmbutton
